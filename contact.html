@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Sen Tsukigase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .success-message {
+      display: none;
+      padding: 20px;
+      background: #f0f0f0;
+      border-left: 3px solid #333;
+      margin-top: 24px;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      color: #444;
+    }
+    .success-message.visible { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <a href="index.html" class="logo">Sen <span>Tsukigase</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="illustration.html">Illustration</a></li>
+        <li><a href="works.html">Works</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="contact-layout">
+
+      <!-- LEFT: INFO -->
+      <div class="contact-info" data-reveal="left">
+        <p class="section-label" style="color:var(--light);">
+          <span style="display:inline-block;width:28px;height:1px;background:var(--light);vertical-align:middle;margin-right:12px;"></span>
+          お問い合わせ
+        </p>
+        <h1>Let's<br><em style="font-style:italic;color:var(--light);">connect.</em></h1>
+        <p>
+          作品のご依頼、展示のご相談、商品に関するお問い合わせなど、
+          どうぞお気軽にご連絡ください。
+        </p>
+
+        <div class="divider-h"></div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-item">
+            <h4>Email</h4>
+            <p>tukigase1ooo@gmail.com</p>
+          </div>
+          <div class="contact-detail-item">
+            <h4>拠点</h4>
+            <p>東京都</p>
+          </div>
+          <div class="contact-detail-item">
+            <h4>対応エリア</h4>
+            <p>国内・海外ともに対応可能</p>
+          </div>
+        </div>
+
+        <div class="divider-h"></div>
+
+        <!-- Skeb -->
+        <div style="margin-bottom: 8px;">
+          <p class="section-label" style="color:var(--light);margin-bottom:12px;">イラスト依頼はこちら</p>
+          <a href="https://skeb.jp/@TukiTuki1000" target="_blank" rel="noopener noreferrer"
+            style="display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border:1px solid #444;color:var(--light);font-family:'Cormorant Garamond',serif;font-size:0.95rem;letter-spacing:0.1em;text-decoration:none;transition:border-color 0.2s,color 0.2s;"
+            onmouseover="this.style.borderColor='#aaa';this.style.color='#fff'"
+            onmouseout="this.style.borderColor='#444';this.style.color=''">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 8 L14 8 M9 3 L14 8 L9 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Skeb でリクエストする
+          </a>
+        </div>
+
+        <div class="divider-h"></div>
+
+        <!-- Decorative illustration -->
+        <svg width="160" height="80" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg" style="opacity:0.3;margin-top:8px;">
+          <line x1="0" y1="40" x2="160" y2="40" stroke="#888" stroke-width="0.5"/>
+          <circle cx="80" cy="40" r="25" fill="none" stroke="#888" stroke-width="1"/>
+          <circle cx="80" cy="40" r="16" fill="none" stroke="#666" stroke-width="0.8"/>
+          <circle cx="80" cy="40" r="7" fill="none" stroke="#777" stroke-width="1"/>
+          <line x1="80" y1="0" x2="80" y2="80" stroke="#666" stroke-width="0.5"/>
+          <circle cx="80" cy="40" r="3" fill="#888"/>
+          <text x="18" y="70" font-family="serif" font-size="7" fill="#666" letter-spacing="3">TOKYO · JAPAN</text>
+        </svg>
+
+        <div class="social-links" style="margin-top:32px;">
+          <a href="https://x.com/Tukigase1000" target="_blank" rel="noopener noreferrer" class="social-link">TW</a>
+          <a href="https://www.pixiv.net/users/48445663" target="_blank" rel="noopener noreferrer" class="social-link">Pixiv</a>
+          <a href="https://wick-share.com/sns/share/i3G26Jcv" target="_blank" rel="noopener noreferrer" class="social-link">Wick</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div class="contact-form" data-reveal="right">
+        <h2>メッセージを<br>送る</h2>
+
+        <div style="border:1px solid #3a3a3a;padding:20px 22px;margin-bottom:32px;font-size:0.82rem;line-height:1.85;color:var(--mid);letter-spacing:0.04em;">
+          <p style="margin:0 0 10px;color:var(--light);font-size:0.85rem;letter-spacing:0.08em;" id="recruitMsg"></p>
+          <p style="margin:0 0 8px;">ご依頼の際には以下の項目をご明記ください。</p>
+          <ul style="margin:0 0 12px;padding-left:1.2em;list-style:disc;">
+            <li>使用用途</li>
+            <li>希望費用</li>
+            <li>希望納期</li>
+            <li>実績公開の可否</li>
+            <li>制作の流れ</li>
+            <li>提出データ形式（拡張子・サイズ・解像度など）</li>
+            <li>参考画像や PDF など</li>
+          </ul>
+          <p style="margin:0 0 8px;">上記をご確認・ご同意のうえ、お問い合わせくださいますようお願いいたします。</p>
+          <p style="margin:0;color:#c0392b;font-size:0.8rem;">※ 現在、実績非公開でのご依頼はお受けしておりません。</p>
+        </div>
+
+        <form id="contactForm" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">お名前（姓）</label>
+              <input type="text" id="firstName" name="firstName" placeholder="山田" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">お名前（名）</label>
+              <input type="text" id="lastName" name="lastName" placeholder="太郎" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" name="email" placeholder="taro@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">お問い合わせの種類</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>選択してください</option>
+              <option value="イラスト制作のご依頼">イラスト制作のご依頼</option>
+              <option value="展示・コラボのご相談">展示・コラボのご相談</option>
+              <option value="商品・購入について">商品・購入について</option>
+              <option value="取材・メディア掲載">取材・メディア掲載</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">ご予算（任意）</label>
+            <select id="budget" name="budget">
+              <option value="" disabled selected>— 任意 —</option>
+              <option value="¥10,000 〜 ¥30,000">¥10,000 〜 ¥30,000</option>
+              <option value="¥30,000 〜 ¥50,000">¥30,000 〜 ¥50,000</option>
+              <option value="¥50,000 〜 ¥100,000">¥50,000 〜 ¥100,000</option>
+              <option value="¥100,000 〜">¥100,000 〜</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">メッセージ</label>
+            <textarea id="message" name="message" placeholder="ご依頼の内容、ご希望のスタイル、納期などをお知らせください。" required style="height:150px;"></textarea>
+          </div>
+
+          <div class="form-group" style="display:flex;align-items:flex-start;gap:12px;">
+            <input type="checkbox" id="agree" name="agree" style="width:auto;margin-top:4px;" required />
+            <label for="agree" style="text-transform:none;letter-spacing:0;font-size:0.82rem;color:var(--mid);cursor:pointer;">
+              プライバシーポリシーに同意します。
+              いただいたお問い合わせの内容はご返信目的のみに使用します。
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-fill" style="width:100%;text-align:center;">
+            送信する
+          </button>
+
+          <div class="success-message" id="successMsg">
+            ありがとうございます。メッセージを受け付けました。
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Sen <span>Tsukigase</span></a>
+        <p>イラスト・デザイン・音楽・ウェブ制作など、クリエイティブな表現を幅広く追求するマルチクリエイター。</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="illustration.html">Illustration</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://x.com/Tukigase1000" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+          <li><a href="https://www.pixiv.net/users/48445663" target="_blank" rel="noopener noreferrer">Pixiv</a></li>
+          <li><a href="https://wick-share.com/sns/share/i3G26Jcv" target="_blank" rel="noopener noreferrer">Wick</a></li>
+          <li><a href="https://skeb.jp/@TukiTuki1000" target="_blank" rel="noopener noreferrer">Skeb</a></li>
+          <li><a href="contact.html">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Sen Tsukigase. All rights reserved.</p>
+      <p>Designed with ink &amp; intention.</p>
+    </div>
+  </footer>
+
+  <script src="reveal.js" defer></script>
+  <script>
+    const now = new Date();
+    document.getElementById('recruitMsg').textContent =
+      now.getFullYear() + '年' + (now.getMonth() + 1) + '月よりお仕事を受付中です。';
+
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = '送信中…';
+      btn.disabled = true;
+
+      const data = {
+        お名前: form.firstName.value + ' ' + form.lastName.value,
+        メールアドレス: form.email.value,
+        お問い合わせの種類: form.subject.value,
+        ご予算: form.budget.value || '未記入',
+        メッセージ: form.message.value
+      };
+
+      try {
+        const res = await fetch('https://formspree.io/f/xdabojwy', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (res.ok) {
+          form.reset();
+          successMsg.classList.add('visible');
+          successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          alert('送信に失敗しました。時間をおいて再度お試しください。');
+        }
+      } catch {
+        alert('送信に失敗しました。通信環境をご確認ください。');
+      }
+
+      btn.textContent = '送信する';
+      btn.disabled = false;
+    });
+  </script>
+
+</body>
+</html>

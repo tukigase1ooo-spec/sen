@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Illustration — Sen Tsukigase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .works-masonry {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      padding: 40px 60px 80px;
+    }
+    @media (max-width: 900px) {
+      .works-masonry { grid-template-columns: repeat(2, 1fr); padding: 24px; }
+    }
+    @media (max-width: 600px) {
+      .works-masonry { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <a href="index.html" class="logo">Sen <span>Tsukigase</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="illustration.html" class="active">Illustration</a></li>
+        <li><a href="works.html">Works</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero" data-reveal="up">
+      <p class="section-label">Illustration</p>
+      <h1>Illustration</h1>
+      <p>オリジナルキャラクターやファンアートなど、イラスト作品をご覧ください。</p>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar" data-reveal="up" data-reveal-delay="100">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="original">Original</button>
+      <button class="filter-btn" data-filter="fanart">Fanart</button>
+    </div>
+
+    <!-- WORKS GRID -->
+    <div class="works-masonry" id="illustGrid"></div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Sen <span>Tsukigase</span></a>
+        <p>イラスト・デザイン・音楽・ウェブ制作など、クリエイティブな表現を幅広く追求するマルチクリエイター。</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="illustration.html">Illustration</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://x.com/Tukigase1000" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+          <li><a href="https://www.pixiv.net/users/48445663" target="_blank" rel="noopener noreferrer">Pixiv</a></li>
+          <li><a href="https://wick-share.com/sns/share/i3G26Jcv" target="_blank" rel="noopener noreferrer">Wick</a></li>
+          <li><a href="https://skeb.jp/@TukiTuki1000" target="_blank" rel="noopener noreferrer">Skeb</a></li>
+          <li><a href="contact.html">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Sen Tsukigase. All rights reserved.</p>
+      <p>Designed with ink &amp; intention.</p>
+    </div>
+  </footer>
+
+  <script src="reveal.js" defer></script>
+  <script>
+    let allItems = [];
+
+    function renderItems(filter) {
+      const grid = document.getElementById('illustGrid');
+      grid.innerHTML = '';
+
+      const filtered = filter === 'all'
+        ? allItems
+        : allItems.filter(item => item.category === filter);
+
+      filtered.forEach((work, i) => {
+        const div = document.createElement('div');
+        div.className = 'masonry-item';
+        div.dataset.category = work.category || 'original';
+        div.style.aspectRatio = work.aspectRatio || '3/4';
+        div.dataset.reveal = 'up';
+        const delay = [0, 80, 160][i % 3];
+        if (delay) div.dataset.revealDelay = String(delay);
+
+        if (work.image) {
+          const img = document.createElement('img');
+          img.src = work.image;
+          img.alt = work.title || '';
+          img.loading = 'lazy';
+          div.appendChild(img);
+        } else {
+          const ph = document.createElement('div');
+          ph.className = 'work-placeholder';
+          const t = document.createElement('span');
+          t.textContent = work.title || '';
+          ph.appendChild(t);
+          div.appendChild(ph);
+        }
+
+        const overlay = document.createElement('div');
+        overlay.className = 'masonry-overlay';
+        const h3 = document.createElement('h3');
+        h3.textContent = work.title || '';
+        const span = document.createElement('span');
+        const catLabel = work.category === 'fanart' ? 'Fanart' : 'Original';
+        span.textContent = ['Illustration', catLabel, work.year].filter(Boolean).join(' · ');
+        overlay.appendChild(h3);
+        overlay.appendChild(span);
+        div.appendChild(overlay);
+
+        grid.appendChild(div);
+      });
+
+      if (window.initReveal) window.initReveal();
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderItems(btn.dataset.filter);
+      });
+    });
+
+    async function loadIllustrations() {
+      try {
+        const res = await fetch('/data/illustrations.json');
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        allItems = data.items || [];
+        renderItems('all');
+      } catch {
+        document.getElementById('illustGrid').innerHTML =
+          '<p style="padding:60px;color:#888;font-family:serif;letter-spacing:0.1em;">イラストを読み込めませんでした。</p>';
+      }
+    }
+
+    loadIllustrations();
+  </script>
+
+</body>
+</html>

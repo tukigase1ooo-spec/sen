@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Works — Sen Tsukigase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .works-masonry {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      padding: 40px 60px 80px;
+    }
+    @media (max-width: 900px) {
+      .works-masonry { grid-template-columns: repeat(2, 1fr); padding: 24px; }
+    }
+    @media (max-width: 600px) {
+      .works-masonry { grid-template-columns: 1fr; }
+    }
+
+    .masonry-item { cursor: pointer; }
+
+    /* ===== MODAL ===== */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal-backdrop.open { display: flex; }
+
+    .modal {
+      background: #111;
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+    @media (max-width: 640px) {
+      .modal { grid-template-columns: 1fr; }
+    }
+
+    .modal-image {
+      background: #0a0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      min-height: 320px;
+    }
+    .modal-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .modal-image .work-placeholder {
+      width: 100%;
+      min-height: 240px;
+    }
+
+    .modal-body {
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .modal-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #666;
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #e8e8e8;
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    .modal-divider {
+      width: 36px;
+      height: 1px;
+      background: #444;
+    }
+
+    .modal-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .modal-meta-row {
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+    }
+    .modal-meta-key {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #555;
+      min-width: 64px;
+    }
+    .modal-meta-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: #aaa;
+      letter-spacing: 0.04em;
+    }
+
+    .modal-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #888;
+      letter-spacing: 0.03em;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #666;
+      font-size: 1.4rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 8px;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: #ccc; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <a href="index.html" class="logo">Sen <span>Tsukigase</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="illustration.html">Illustration</a></li>
+        <li><a href="works.html" class="active">Works</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero" data-reveal="up">
+      <p class="section-label">Commission &amp; Projects</p>
+      <h1>Works</h1>
+      <p>出版・広告・装丁など、これまでに手がけたお仕事の一部をご紹介します。</p>
+    </div>
+
+    <!-- WORKS GRID -->
+    <div class="works-masonry" id="worksGrid"></div>
+
+  </main>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose" aria-label="閉じる">&times;</button>
+      <div class="modal-image" id="modalImage"></div>
+      <div class="modal-body">
+        <p class="modal-label" id="modalUsage"></p>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-divider"></div>
+        <div class="modal-meta" id="modalMeta"></div>
+        <p class="modal-desc" id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Sen <span>Tsukigase</span></a>
+        <p>イラスト・デザイン・音楽・ウェブ制作など、クリエイティブな表現を幅広く追求するマルチクリエイター。</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="illustration.html">Illustration</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://x.com/Tukigase1000" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+          <li><a href="https://www.pixiv.net/users/48445663" target="_blank" rel="noopener noreferrer">Pixiv</a></li>
+          <li><a href="https://wick-share.com/sns/share/i3G26Jcv" target="_blank" rel="noopener noreferrer">Wick</a></li>
+          <li><a href="https://skeb.jp/@TukiTuki1000" target="_blank" rel="noopener noreferrer">Skeb</a></li>
+          <li><a href="contact.html">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Sen Tsukigase. All rights reserved.</p>
+      <p>Designed with ink &amp; intention.</p>
+    </div>
+  </footer>
+
+  <script src="reveal.js" defer></script>
+  <script>
+    function closeModal() {
+      document.getElementById('modalBackdrop').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function openModal(work) {
+      const modalImage = document.getElementById('modalImage');
+      modalImage.innerHTML = '';
+
+      if (work.image) {
+        const img = document.createElement('img');
+        img.src = work.image;
+        img.alt = work.title || '';
+        modalImage.appendChild(img);
+      } else {
+        const ph = document.createElement('div');
+        ph.className = 'work-placeholder';
+        const t = document.createElement('span');
+        t.textContent = work.title || '';
+        ph.appendChild(t);
+        modalImage.appendChild(ph);
+      }
+
+      document.getElementById('modalTitle').textContent = work.title || '';
+      document.getElementById('modalUsage').textContent = work.usage || '';
+      document.getElementById('modalDesc').textContent = work.desc || '';
+
+      const modalMeta = document.getElementById('modalMeta');
+      modalMeta.innerHTML = '';
+      [['Client', work.client], ['Medium', work.medium], ['Year', work.year]]
+        .filter(([, v]) => v)
+        .forEach(([key, val]) => {
+          const row = document.createElement('div');
+          row.className = 'modal-meta-row';
+          const k = document.createElement('span');
+          k.className = 'modal-meta-key';
+          k.textContent = key;
+          const v = document.createElement('span');
+          v.className = 'modal-meta-val';
+          v.textContent = val;
+          row.appendChild(k);
+          row.appendChild(v);
+          modalMeta.appendChild(row);
+        });
+
+      document.getElementById('modalBackdrop').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modalBackdrop').addEventListener('click', e => {
+      if (e.target === document.getElementById('modalBackdrop')) closeModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    async function loadWorks() {
+      const grid = document.getElementById('worksGrid');
+      try {
+        const res = await fetch('/data/works.json');
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        const items = data.items || [];
+
+        items.forEach((work, i) => {
+          const div = document.createElement('div');
+          div.className = 'masonry-item';
+          div.style.aspectRatio = work.aspectRatio || '3/4';
+          div.dataset.reveal = 'up';
+          const delay = [0, 80, 160][i % 3];
+          if (delay) div.dataset.revealDelay = String(delay);
+
+          if (work.image) {
+            const img = document.createElement('img');
+            img.src = work.image;
+            img.alt = work.title || '';
+            img.loading = 'lazy';
+            div.appendChild(img);
+          } else {
+            const ph = document.createElement('div');
+            ph.className = 'work-placeholder';
+            const t = document.createElement('span');
+            t.textContent = work.title || '';
+            ph.appendChild(t);
+            div.appendChild(ph);
+          }
+
+          const overlay = document.createElement('div');
+          overlay.className = 'masonry-overlay';
+          const h3 = document.createElement('h3');
+          h3.textContent = work.title || '';
+          const span = document.createElement('span');
+          span.textContent = [work.client, work.usage].filter(Boolean).join(' · ');
+          overlay.appendChild(h3);
+          overlay.appendChild(span);
+          div.appendChild(overlay);
+
+          div.addEventListener('click', () => openModal(work));
+          grid.appendChild(div);
+        });
+
+        if (window.initReveal) window.initReveal();
+      } catch {
+        grid.innerHTML = '<p style="padding:60px;color:#888;font-family:serif;letter-spacing:0.1em;">作品を読み込めませんでした。</p>';
+      }
+    }
+
+    loadWorks();
+  </script>
+
+</body>
+</html>

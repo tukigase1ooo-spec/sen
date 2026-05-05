@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sen Tsukigase — Illustrator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+  <!-- ===== PIANO INTRO ===== -->
+  <div id="piano-intro" aria-hidden="true">
+    <div class="pi-scene">
+      <p class="pi-over-label">Welcome</p>
+      <h2 class="pi-name">Sen <em>Tsukigase</em></h2>
+      <div class="pi-stage">
+        <svg class="pi-svg" viewBox="0 0 424 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- White keys: C D E F G A B C -->
+          <g class="pk pk-w1"><rect x="1"   y="14" width="51" height="158" fill="#e8e8e8" stroke="#aaa" stroke-width="0.5" rx="3"/></g>
+          <g class="pk pk-w2"><rect x="54"  y="14" width="51" height="158" fill="#e8e8e8" stroke="#aaa" stroke-width="0.5" rx="3"/></g>
+          <g class="pk pk-w3"><rect x="107" y="14" width="51" height="158" fill="#e8e8e8" stroke="#aaa" stroke-width="0.5" rx="3"/></g>
+          <g class="pk pk-w4"><rect x="160" y="14" width="51" height="158" fill="#e8e8e8" stroke="#aaa" stroke-width="0.5" rx="3"/></g>
+          <g class="pk pk-w5"><rect x="213" y="14" width="51" height="158" fill="#e8e8e8" stroke="#aaa" stroke-width="0.5" rx="3"/></g>
+          <g class="pk pk-w6"><rect x="266" y="14" width="51" height="158" fill="#e8e8e8" stroke="#aaa" stroke-width="0.5" rx="3"/></g>
+          <g class="pk pk-w7"><rect x="319" y="14" width="51" height="158" fill="#e8e8e8" stroke="#aaa" stroke-width="0.5" rx="3"/></g>
+          <g class="pk pk-w8"><rect x="372" y="14" width="51" height="158" fill="#e8e8e8" stroke="#aaa" stroke-width="0.5" rx="3"/></g>
+          <!-- Black keys: C# D# F# G# A# -->
+          <g class="pk pk-b1"><rect x="38"  y="14" width="30" height="96" fill="#1a1a1a" rx="2"/></g>
+          <g class="pk pk-b2"><rect x="90"  y="14" width="30" height="96" fill="#1a1a1a" rx="2"/></g>
+          <g class="pk pk-b3"><rect x="197" y="14" width="30" height="96" fill="#1a1a1a" rx="2"/></g>
+          <g class="pk pk-b4"><rect x="250" y="14" width="30" height="96" fill="#1a1a1a" rx="2"/></g>
+          <g class="pk pk-b5"><rect x="303" y="14" width="30" height="96" fill="#1a1a1a" rx="2"/></g>
+          <!-- Piano body bar (renders on top of key tops) -->
+          <rect x="0" y="0" width="424" height="16" fill="#111" rx="3"/>
+          <line x1="0" y1="13" x2="424" y2="13" stroke="#2a2a2a" stroke-width="1.5"/>
+        </svg>
+        <div class="pi-notes">
+          <span class="pi-note" style="--nd:0.50s;--nx:6%">♪</span>
+          <span class="pi-note" style="--nd:0.80s;--nx:31%">♫</span>
+          <span class="pi-note" style="--nd:1.10s;--nx:56%">♩</span>
+          <span class="pi-note" style="--nd:1.40s;--nx:69%">♪</span>
+          <span class="pi-note" style="--nd:1.70s;--nx:44%">♫</span>
+          <span class="pi-note" style="--nd:2.00s;--nx:19%">♩</span>
+          <span class="pi-note" style="--nd:2.30s;--nx:81%">♪</span>
+          <span class="pi-note" style="--nd:2.60s;--nx:94%">♫</span>
+        </div>
+      </div>
+      <p class="pi-tagline">Illustration · Design · Music · Web</p>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <a href="index.html" class="logo">Sen <span>Tsukigase</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="illustration.html">Illustration</a></li>
+        <li><a href="works.html">Works</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow" data-reveal="up">Illustration · Design · Music · Web</p>
+        <h1 class="hero-title" data-reveal="up" data-reveal-delay="150">
+          Creative<br><em>without limits</em>
+        </h1>
+        <p class="hero-sub" data-reveal="up" data-reveal-delay="300">ジャンルを超えて、自分だけの表現を追い求めるマルチクリエイター。</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" data-reveal="up" data-reveal-delay="450">
+          <a href="works.html" class="btn btn-fill">View Works</a>
+          <a href="contact.html" class="btn">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT STRIP -->
+    <div class="about-strip">
+      <div class="about-image" data-reveal="left">
+        <!-- Portrait placeholder illustration -->
+        <svg width="340" height="420" viewBox="0 0 340 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background texture lines -->
+          <rect width="340" height="420" fill="#111"/>
+          <line x1="0" y1="40" x2="340" y2="40" stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="80" x2="340" y2="80" stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="120" x2="340" y2="120" stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="160" x2="340" y2="160" stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="200" x2="340" y2="200" stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="240" x2="340" y2="240" stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="280" x2="340" y2="280" stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="320" x2="340" y2="320" stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="360" x2="340" y2="360" stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="400" x2="340" y2="400" stroke="#222" stroke-width="1"/>
+          <!-- Vertical lines -->
+          <line x1="40" y1="0" x2="40" y2="420" stroke="#222" stroke-width="1"/>
+          <line x1="80" y1="0" x2="80" y2="420" stroke="#222" stroke-width="1"/>
+          <line x1="120" y1="0" x2="120" y2="420" stroke="#222" stroke-width="1"/>
+          <line x1="160" y1="0" x2="160" y2="420" stroke="#222" stroke-width="1"/>
+          <line x1="200" y1="0" x2="200" y2="420" stroke="#222" stroke-width="1"/>
+          <line x1="240" y1="0" x2="240" y2="420" stroke="#222" stroke-width="1"/>
+          <line x1="280" y1="0" x2="280" y2="420" stroke="#222" stroke-width="1"/>
+          <line x1="320" y1="0" x2="320" y2="420" stroke="#222" stroke-width="1"/>
+          <!-- Stylized face -->
+          <ellipse cx="170" cy="160" rx="75" ry="90" fill="none" stroke="#888" stroke-width="1.5"/>
+          <!-- Eyes -->
+          <ellipse cx="145" cy="145" rx="8" ry="5" fill="none" stroke="#aaa" stroke-width="1.5"/>
+          <ellipse cx="195" cy="145" rx="8" ry="5" fill="none" stroke="#aaa" stroke-width="1.5"/>
+          <circle cx="147" cy="145" r="3" fill="#aaa"/>
+          <circle cx="197" cy="145" r="3" fill="#aaa"/>
+          <!-- Nose -->
+          <path d="M170 152 L163 172 Q170 178 177 172 Z" fill="none" stroke="#888" stroke-width="1"/>
+          <!-- Mouth -->
+          <path d="M155 188 Q170 198 185 188" fill="none" stroke="#aaa" stroke-width="1.5"/>
+          <!-- Hair -->
+          <path d="M95 160 Q88 80 170 72 Q252 80 245 160" fill="none" stroke="#999" stroke-width="1.5"/>
+          <path d="M95 160 Q90 200 100 230" fill="none" stroke="#888" stroke-width="1"/>
+          <!-- Shoulders / body -->
+          <path d="M100 260 Q130 248 170 250 Q210 248 240 260 L250 340 L90 340 Z" fill="none" stroke="#777" stroke-width="1.5"/>
+          <!-- Decorative elements -->
+          <circle cx="50" cy="50" r="20" fill="none" stroke="#444" stroke-width="0.5"/>
+          <circle cx="290" cy="370" r="30" fill="none" stroke="#444" stroke-width="0.5"/>
+          <text x="20" y="400" font-family="serif" font-size="10" fill="#555" letter-spacing="3">PORTRAIT</text>
+        </svg>
+      </div>
+      <div class="about-text" data-reveal="right">
+        <p class="section-label">About</p>
+        <h2 class="section-title">クリエイティブで<br>世界を広げる</h2>
+        <p>
+          Sen Tsukigase は、イラスト・デザイン・音楽・ウェブサイト制作など、
+          クリエイティブな活動全般に強い関心を持つアーティストです。
+        </p>
+        <p>
+          特定のジャンルに縛られず、あらゆる表現領域で自分のビジョンを形にすることを目標に活動しています。
+          それぞれの分野が互いに影響し合い、唯一無二のクリエイティブへとつながると信じています。
+        </p>
+        <a href="works.html" class="btn">作品を見る</a>
+      </div>
+    </div>
+
+    <!-- FEATURED WORKS -->
+    <section class="featured">
+      <p class="section-label" data-reveal="up">Selected Works</p>
+      <h2 class="section-title" data-reveal="up" data-reveal-delay="120">注目の作品</h2>
+      <div class="works-grid" id="featuredGrid"></div>
+      <div class="ornament" data-reveal="fade">✦</div>
+      <div style="text-align:center;" data-reveal="up">
+        <a href="works.html" class="btn">全作品を見る</a>
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Sen <span>Tsukigase</span></a>
+        <p>イラスト・デザイン・音楽・ウェブ制作など、クリエイティブな表現を幅広く追求するマルチクリエイター。</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="illustration.html">Illustration</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://x.com/Tukigase1000" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+          <li><a href="https://www.pixiv.net/users/48445663" target="_blank" rel="noopener noreferrer">Pixiv</a></li>
+          <li><a href="https://wick-share.com/sns/share/i3G26Jcv" target="_blank" rel="noopener noreferrer">Wick</a></li>
+          <li><a href="https://skeb.jp/@TukiTuki1000" target="_blank" rel="noopener noreferrer">Skeb</a></li>
+          <li><a href="contact.html">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Sen Tsukigase. All rights reserved.</p>
+      <p>Designed with ink &amp; intention.</p>
+    </div>
+  </footer>
+
+
+  <script src="reveal.js" defer></script>
+  <script>
+    // Netlify Identity: ログイン後に管理画面へリダイレクト
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+
+    // Featured works を JSON から動的生成
+    async function loadFeatured() {
+      try {
+        const res = await fetch('/data/works.json');
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        const items = (data.items || []).slice(0, 3);
+        const grid = document.getElementById('featuredGrid');
+
+        items.forEach((work, i) => {
+          const div = document.createElement('div');
+          div.className = 'work-item';
+          div.dataset.reveal = 'up';
+          if (i > 0) div.dataset.revealDelay = String(i * 120);
+
+          if (work.image) {
+            const img = document.createElement('img');
+            img.src = work.image;
+            img.alt = work.title || '';
+            img.loading = 'lazy';
+            div.appendChild(img);
+          } else {
+            const ph = document.createElement('div');
+            ph.className = 'work-placeholder';
+            const t = document.createElement('span');
+            t.textContent = work.title || '';
+            ph.appendChild(t);
+            div.appendChild(ph);
+          }
+
+          const overlay = document.createElement('div');
+          overlay.className = 'work-overlay';
+          const h3 = document.createElement('h3');
+          h3.textContent = work.title || '';
+          const p = document.createElement('p');
+          p.textContent = [work.medium, work.year].filter(Boolean).join(' · ');
+          overlay.appendChild(h3);
+          overlay.appendChild(p);
+          div.appendChild(overlay);
+
+          grid.appendChild(div);
+        });
+
+        if (window.initReveal) window.initReveal();
+      } catch {
+        // フォールバック：グリッドは空のまま
+      }
+    }
+
+    loadFeatured();
+
+    (function () {
+      var intro = document.getElementById('piano-intro');
+
+      if (sessionStorage.getItem('pianoShown')) {
+        intro.remove();
+      } else {
+        function closePiano() {
+          if (intro.classList.contains('pi-out')) return;
+          sessionStorage.setItem('pianoShown', '1');
+          intro.classList.add('pi-out');
+          setTimeout(function () { if (intro.parentNode) intro.remove(); }, 1000);
+        }
+
+        intro.addEventListener('click', closePiano);
+        setTimeout(closePiano, 2800);
+      }
+    }());
+  </script>
+</body>
+</html>
