@@ -1,26 +1,6 @@
 {
   "items": [
     {
-      "title": "Silence No. 1",
-      "client": "文藝春秋社",
-      "usage": "小説装丁イラスト",
-      "medium": "Pen & Ink",
-      "year": "2024",
-      "desc": "純文学作品の装丁として制作。静寂と孤独をテーマに、細密なペンハッチングで人物の内面を表現しました。",
-      "image": "",
-      "aspectRatio": "3/4"
-    },
-    {
-      "title": "Nocturne",
-      "client": "Sony Music Japan",
-      "usage": "アルバムジャケット",
-      "medium": "Digital",
-      "year": "2024",
-      "desc": "ピアニストのソロアルバム「夜想曲」のジャケットビジュアル。夜の静寂と音楽の余白を、月と樹影で表現しました。",
-      "image": "",
-      "aspectRatio": "4/3"
-    },
-    {
       "title": "Botanical III",
       "client": "BULY 1803 Japan",
       "usage": "パッケージイラスト",
@@ -89,6 +69,13 @@
       "desc": "無印良品 旗艦店のウィンドウアートとして制作。シンプルな幾何学模様の中に宿る静けさと調和を、デジタルで表現しました。",
       "image": "",
       "aspectRatio": "4/3"
+    },
+    {
+      "aspectRatio": "3/4",
+      "image": "/images/uploads/紫宮　新衣装-1-.png",
+      "title": "紫宮新衣装",
+      "year": "2025年",
+      "desc": "新衣装を初めて描きました。"
     }
   ]
 }
