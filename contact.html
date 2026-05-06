@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — Sen Tsukigase</title>
+  <meta name="description" content="作品のご依頼、展示のご相談など、お気軽にご連絡ください。イラスト・ウェブページ作成の依頼を受け付けています。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact — Sen Tsukigase" />
+  <meta property="og:description" content="作品のご依頼、展示のご相談など、お気軽にご連絡ください。イラスト・ウェブページ作成の依頼を受け付けています。" />
+  <meta property="og:site_name" content="Sen Tsukigase" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Tukigase1000" />
+  <meta name="twitter:title" content="Contact — Sen Tsukigase" />
+  <meta name="twitter:description" content="作品のご依頼、展示のご相談など、お気軽にご連絡ください。イラスト・ウェブページ作成の依頼を受け付けています。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -20,6 +30,115 @@
       color: #444;
     }
     .success-message.visible { display: block; }
+
+    /* ===== WEB INQUIRY ACCORDION ===== */
+    .inquiry-accordion {
+      border: 1px solid var(--pale);
+      margin-bottom: 28px;
+    }
+
+    .inquiry-accordion summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      cursor: pointer;
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      list-style: none;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .inquiry-accordion summary::-webkit-details-marker { display: none; }
+
+    .inquiry-accordion summary:hover { background: #f5f5f3; }
+
+    .inquiry-accordion[open] summary { border-bottom: 1px solid var(--pale); }
+
+    .accordion-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .accordion-icon::before,
+    .accordion-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--mid);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .accordion-icon::before {
+      width: 10px; height: 1px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .accordion-icon::after {
+      width: 1px; height: 10px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .inquiry-accordion[open] .accordion-icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+      opacity: 0;
+    }
+
+    .inquiry-accordion-body {
+      padding: 24px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .inquiry-section h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 10px;
+      font-family: var(--font-sans);
+      font-weight: 400;
+    }
+
+    .inquiry-section p,
+    .inquiry-section li {
+      font-size: 0.88rem;
+      color: var(--dark);
+      line-height: 1.75;
+      letter-spacing: 0.03em;
+    }
+
+    .inquiry-section ol,
+    .inquiry-section ul {
+      padding-left: 1.4em;
+    }
+
+    .inquiry-section li { margin-bottom: 4px; }
+
+    .inquiry-section .note-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .inquiry-section .note-list li::before {
+      content: '※ ';
+      color: var(--mid);
+    }
+
+    .etc-note {
+      text-align: right;
+      font-size: 0.78rem;
+      color: var(--mid);
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
   </style>
 </head>
 <body>
@@ -110,6 +229,119 @@
       <div class="contact-form" data-reveal="right">
         <h2>メッセージを<br>送る</h2>
 
+        <!-- イラスト作成依頼 アコーディオン -->
+        <details class="inquiry-accordion">
+          <summary>
+            イラスト作成依頼について
+            <span class="accordion-icon"></span>
+          </summary>
+          <div class="inquiry-accordion-body">
+
+            <div class="inquiry-section">
+              <h4>現在の基本料金</h4>
+              <p>¥30,000 〜 ¥50,000</p>
+              <p style="margin-top:6px;font-size:0.82rem;color:var(--mid);">商用利用の場合は基本料金の 30〜50% を追加いただきます。</p>
+              <p style="margin-top:4px;font-size:0.78rem;color:var(--mid);">※ 費用は予告なく変更する場合があります。</p>
+            </div>
+
+            <div class="inquiry-section">
+              <h4>ご依頼の流れ</h4>
+              <ol>
+                <li>お問い合わせ</li>
+                <li>依頼内容確認及び見積り</li>
+                <li>ご入金</li>
+                <li>ラフ確認（修正2回まで無料）</li>
+                <li>納品</li>
+                <li>ご確認後修正を行い完了</li>
+              </ol>
+            </div>
+
+            <div class="inquiry-section">
+              <h4>受付中の依頼</h4>
+              <ul>
+                <li>背景なしイラスト</li>
+                <li>SD（ミニキャラ）イラスト</li>
+                <li>背景付きイラスト</li>
+                <li>キャラクターデザイン</li>
+              </ul>
+              <p class="etc-note">など</p>
+              <p style="margin-top:8px;font-size:0.82rem;color:var(--mid);">一次創作・二次創作どちらもお受けしております。</p>
+            </div>
+
+            <div class="inquiry-section">
+              <h4>オプション</h4>
+              <ul>
+                <li>表情差分</li>
+                <li>PSD納品</li>
+                <li>著作権譲渡</li>
+                <li>3回目以降の修正</li>
+              </ul>
+              <p class="etc-note">など</p>
+            </div>
+
+            <div class="inquiry-section">
+              <h4>注意事項</h4>
+              <ul class="note-list">
+                <li>ご利用用途の記載をお願いします。</li>
+                <li>実績として掲載することが問題のない依頼しかお受けしておりません。</li>
+                <li>確認の連絡に対して返信が遅い場合、納品が遅れることがあります。</li>
+                <li>費用は予告なく変更する場合があります。</li>
+              </ul>
+            </div>
+
+          </div>
+        </details>
+
+        <!-- ウェブページ作成依頼 アコーディオン -->
+        <details class="inquiry-accordion">
+          <summary>
+            ウェブページ作成依頼について
+            <span class="accordion-icon"></span>
+          </summary>
+          <div class="inquiry-accordion-body">
+
+            <div class="inquiry-section">
+              <h4>現在の基本料金</h4>
+              <p>¥30,000 〜 ¥50,000</p>
+              <p style="margin-top:4px;font-size:0.78rem;color:var(--mid);">※ 費用は予告なく変更する場合があります。</p>
+            </div>
+
+            <div class="inquiry-section">
+              <h4>ご依頼の流れ</h4>
+              <ol>
+                <li>お問い合わせ</li>
+                <li>依頼内容確認及び見積り</li>
+                <li>ドメインの決定</li>
+                <li>ご入金</li>
+                <li>仮作成</li>
+                <li>納品</li>
+                <li>ご確認後修正を行い完了</li>
+              </ol>
+            </div>
+
+            <div class="inquiry-section">
+              <h4>受付中の依頼</h4>
+              <ul>
+                <li>イラストレーター様などのウェブサイト</li>
+                <li>VTuber様などの紹介用ウェブサイト</li>
+                <li>商品の販売サイト</li>
+              </ul>
+              <p class="etc-note">など</p>
+            </div>
+
+            <div class="inquiry-section">
+              <h4>注意事項</h4>
+              <ul class="note-list">
+                <li>ご利用用途の記載をお願いします。</li>
+                <li>実績として掲載することが問題のない依頼しかお受けしておりません。</li>
+                <li>確認の連絡に対して返信が遅い場合、納品が遅れることがあります。</li>
+                <li>費用は予告なく変更する場合があります。</li>
+              </ul>
+            </div>
+
+          </div>
+        </details>
+
         <div style="border:1px solid #3a3a3a;padding:20px 22px;margin-bottom:32px;font-size:0.82rem;line-height:1.85;color:var(--mid);letter-spacing:0.04em;">
           <p style="margin:0 0 10px;color:var(--light);font-size:0.85rem;letter-spacing:0.08em;" id="recruitMsg"></p>
           <p style="margin:0 0 8px;">ご依頼の際には以下の項目をご明記ください。</p>
@@ -149,6 +381,7 @@
             <select id="subject" name="subject" required>
               <option value="" disabled selected>選択してください</option>
               <option value="イラスト制作のご依頼">イラスト制作のご依頼</option>
+              <option value="ウェブページ作成のご依頼">ウェブページ作成のご依頼</option>
               <option value="展示・コラボのご相談">展示・コラボのご相談</option>
               <option value="商品・購入について">商品・購入について</option>
               <option value="取材・メディア掲載">取材・メディア掲載</option>
@@ -228,6 +461,7 @@
   </footer>
 
   <script src="reveal.js" defer></script>
+  <script src="interactions.js" defer></script>
   <script>
     const now = new Date();
     document.getElementById('recruitMsg').textContent =

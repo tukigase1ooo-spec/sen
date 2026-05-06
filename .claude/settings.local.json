@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git remote *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git add *)",
+      "Bash(Select-String -Path \"C:\\\\Users\\\\takku\\\\OneDrive - Prospex\\\\デスクトップ\\\\AndoTak\\\\my\\\\illustrator-website\\\\works.html\" -Pattern \"</body>\")",
+      "Bash(Select-Object LineNumber)"
+    ]
+  }
+}

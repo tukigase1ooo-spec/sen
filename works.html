@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Works — Sen Tsukigase</title>
+  <meta name="description" content="出版・広告・装丁など、Sen Tsukigaseがこれまでに手がけたお仕事の一部をご紹介します。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Works — Sen Tsukigase" />
+  <meta property="og:description" content="出版・広告・装丁など、Sen Tsukigaseがこれまでに手がけたお仕事の一部をご紹介します。" />
+  <meta property="og:site_name" content="Sen Tsukigase" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Tukigase1000" />
+  <meta name="twitter:title" content="Works — Sen Tsukigase" />
+  <meta name="twitter:description" content="出版・広告・装丁など、Sen Tsukigaseがこれまでに手がけたお仕事の一部をご紹介します。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -147,6 +157,15 @@
       transition: color 0.2s;
     }
     .modal-close:hover { color: #ccc; }
+
+    .modal-backdrop.open .modal {
+      animation: modal-in 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes modal-in {
+      from { opacity: 0; transform: translateY(28px) scale(0.97); }
+      to   { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
@@ -227,6 +246,7 @@
   </footer>
 
   <script src="reveal.js" defer></script>
+  <script src="interactions.js" defer></script>
   <script>
     function closeModal() {
       document.getElementById('modalBackdrop').classList.remove('open');
@@ -332,7 +352,7 @@
 
         if (window.initReveal) window.initReveal();
       } catch {
-        grid.innerHTML = '<p style="padding:60px;color:#888;font-family:serif;letter-spacing:0.1em;">作品を読み込めませんでした。</p>';
+        grid.innerHTML = '<p style="padding:60px;color:#888;font-family:serif;letter-spacing:0.1em;">Coming Soon</p>';
       }
     }
 

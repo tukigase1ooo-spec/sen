@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Illustration — Sen Tsukigase</title>
+  <meta name="description" content="Sen Tsukigaseのイラスト作品集。オリジナルキャラクターやファンアートなど。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Illustration — Sen Tsukigase" />
+  <meta property="og:description" content="Sen Tsukigaseのイラスト作品集。オリジナルキャラクターやファンアートなど。" />
+  <meta property="og:site_name" content="Sen Tsukigase" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Tukigase1000" />
+  <meta name="twitter:title" content="Illustration — Sen Tsukigase" />
+  <meta name="twitter:description" content="Sen Tsukigaseのイラスト作品集。オリジナルキャラクターやファンアートなど。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -21,6 +31,144 @@
     @media (max-width: 600px) {
       .works-masonry { grid-template-columns: 1fr; }
     }
+
+    /* ===== ILLUSTRATION MODAL ===== */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal-backdrop.open { display: flex; }
+
+    .modal-backdrop.open .modal {
+      animation: modal-in 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes modal-in {
+      from { opacity: 0; transform: translateY(24px) scale(0.97); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .modal {
+      background: #111;
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+    @media (max-width: 640px) { .modal { grid-template-columns: 1fr; } }
+
+    .modal-image {
+      background: #0a0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      min-height: 320px;
+    }
+    .modal-image img { width: 100%; height: auto; display: block; }
+    .modal-image .work-placeholder { width: 100%; min-height: 240px; }
+
+    .modal-body {
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .modal-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #666;
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #e8e8e8;
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    .modal-divider { width: 36px; height: 1px; background: #444; }
+
+    .modal-meta { display: flex; flex-direction: column; gap: 10px; }
+    .modal-meta-row { display: flex; gap: 16px; align-items: baseline; }
+    .modal-meta-key {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #555;
+      min-width: 64px;
+    }
+    .modal-meta-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: #aaa;
+      letter-spacing: 0.04em;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #666;
+      font-size: 1.4rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 8px;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: #ccc; }
+
+    .modal-x-link {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 10px 24px;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid #444;
+      color: #aaa;
+      font-family: 'Cormorant Garamond', serif;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .modal-x-link:hover { border-color: #888; color: #fff; background: #1a1a1a; }
+
+    .modal-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid #1e1e1e;
+    }
+    .modal-nav button {
+      background: none;
+      border: none;
+      color: #555;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      padding: 6px 0;
+      transition: color 0.2s;
+    }
+    .modal-nav button:hover:not(:disabled) { color: #aaa; }
+    .modal-nav button:disabled { opacity: 0.2; cursor: default; }
   </style>
 </head>
 <body>
@@ -92,24 +240,133 @@
     </div>
   </footer>
 
+  <!-- ===== MODAL ===== -->
+  <div class="modal-backdrop" id="illustBackdrop">
+    <div class="modal">
+      <button class="modal-close" id="illustClose" aria-label="閉じる">&times;</button>
+      <div class="modal-image" id="illustImage"></div>
+      <div class="modal-body">
+        <p class="modal-label" id="illustCatLabel"></p>
+        <h2 class="modal-title" id="illustTitle"></h2>
+        <div class="modal-divider"></div>
+        <div class="modal-meta" id="illustMeta"></div>
+        <a class="modal-x-link" id="illustXLink" href="#" target="_blank" rel="noopener noreferrer">
+          ↗ X（Twitter）で見る
+        </a>
+        <div class="modal-nav">
+          <button id="illustPrev">← 前の作品</button>
+          <button id="illustNext">次の作品 →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="reveal.js" defer></script>
+  <script src="interactions.js" defer></script>
   <script>
     let allItems = [];
+    let filteredItems = [];
+    let currentIndex = 0;
+
+    const illustBackdrop = document.getElementById('illustBackdrop');
+    const illustImage    = document.getElementById('illustImage');
+    const illustCatLabel = document.getElementById('illustCatLabel');
+    const illustTitle    = document.getElementById('illustTitle');
+    const illustMeta     = document.getElementById('illustMeta');
+    const illustXLink    = document.getElementById('illustXLink');
+    const illustPrev     = document.getElementById('illustPrev');
+    const illustNext     = document.getElementById('illustNext');
+
+    function openModal(index) {
+      currentIndex = index;
+      const w = filteredItems[index];
+
+      // 画像
+      illustImage.innerHTML = '';
+      if (w.image) {
+        const img = document.createElement('img');
+        img.src = w.image;
+        img.alt = w.title || '';
+        illustImage.appendChild(img);
+      } else {
+        const ph = document.createElement('div');
+        ph.className = 'work-placeholder';
+        const t = document.createElement('span');
+        t.textContent = w.title || '';
+        ph.appendChild(t);
+        illustImage.appendChild(ph);
+      }
+
+      // カテゴリラベル・タイトル
+      const catLabel = w.category === 'fanart' ? 'Fanart' : 'Original';
+      illustCatLabel.textContent = 'Illustration · ' + catLabel;
+      illustTitle.textContent = w.title || '';
+
+      // メタ情報（制作年）
+      illustMeta.innerHTML = '';
+      if (w.year) {
+        const row = document.createElement('div');
+        row.className = 'modal-meta-row';
+        const k = document.createElement('span');
+        k.className = 'modal-meta-key';
+        k.textContent = 'Year';
+        const v = document.createElement('span');
+        v.className = 'modal-meta-val';
+        v.textContent = w.year;
+        row.appendChild(k);
+        row.appendChild(v);
+        illustMeta.appendChild(row);
+      }
+
+      // X リンク
+      if (w.xUrl) {
+        illustXLink.href = w.xUrl;
+        illustXLink.style.display = '';
+      } else {
+        illustXLink.style.display = 'none';
+      }
+
+      // 前後ナビ
+      illustPrev.disabled = currentIndex === 0;
+      illustNext.disabled = currentIndex === filteredItems.length - 1;
+
+      illustBackdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      illustBackdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('illustClose').addEventListener('click', closeModal);
+    illustBackdrop.addEventListener('click', e => { if (e.target === illustBackdrop) closeModal(); });
+    illustPrev.addEventListener('click', () => { if (currentIndex > 0) openModal(currentIndex - 1); });
+    illustNext.addEventListener('click', () => {
+      if (currentIndex < filteredItems.length - 1) openModal(currentIndex + 1);
+    });
+    document.addEventListener('keydown', e => {
+      if (!illustBackdrop.classList.contains('open')) return;
+      if (e.key === 'Escape')      closeModal();
+      if (e.key === 'ArrowLeft'  && currentIndex > 0)                       openModal(currentIndex - 1);
+      if (e.key === 'ArrowRight' && currentIndex < filteredItems.length - 1) openModal(currentIndex + 1);
+    });
 
     function renderItems(filter) {
       const grid = document.getElementById('illustGrid');
       grid.innerHTML = '';
 
-      const filtered = filter === 'all'
+      filteredItems = filter === 'all'
         ? allItems
         : allItems.filter(item => item.category === filter);
 
-      filtered.forEach((work, i) => {
+      filteredItems.forEach((work, i) => {
         const div = document.createElement('div');
         div.className = 'masonry-item';
         div.dataset.category = work.category || 'original';
         div.style.aspectRatio = work.aspectRatio || '3/4';
         div.dataset.reveal = 'up';
+        div.style.cursor = 'pointer';
         const delay = [0, 80, 160][i % 3];
         if (delay) div.dataset.revealDelay = String(delay);
 
@@ -133,12 +390,13 @@
         const h3 = document.createElement('h3');
         h3.textContent = work.title || '';
         const span = document.createElement('span');
-        const catLabel = work.category === 'fanart' ? 'Fanart' : 'Original';
-        span.textContent = ['Illustration', catLabel, work.year].filter(Boolean).join(' · ');
+        span.textContent = ['Illustration', work.category === 'fanart' ? 'Fanart' : 'Original', work.year]
+          .filter(Boolean).join(' · ');
         overlay.appendChild(h3);
         overlay.appendChild(span);
         div.appendChild(overlay);
 
+        div.addEventListener('click', () => openModal(i));
         grid.appendChild(div);
       });
 
@@ -162,7 +420,7 @@
         renderItems('all');
       } catch {
         document.getElementById('illustGrid').innerHTML =
-          '<p style="padding:60px;color:#888;font-family:serif;letter-spacing:0.1em;">イラストを読み込めませんでした。</p>';
+          '<p style="padding:60px;color:#888;font-family:serif;letter-spacing:0.1em;">Coming Soon</p>';
       }
     }
 

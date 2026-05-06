@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sen Tsukigase — Illustrator</title>
+  <meta name="description" content="イラスト・デザイン・音楽・ウェブ制作など、クリエイティブな表現を幅広く追求するマルチクリエイター。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sen Tsukigase — Illustrator" />
+  <meta property="og:description" content="イラスト・デザイン・音楽・ウェブ制作など、クリエイティブな表現を幅広く追求するマルチクリエイター。" />
+  <meta property="og:site_name" content="Sen Tsukigase" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Tukigase1000" />
+  <meta name="twitter:title" content="Sen Tsukigase — Illustrator" />
+  <meta name="twitter:description" content="イラスト・デザイン・音楽・ウェブ制作など、クリエイティブな表現を幅広く追求するマルチクリエイター。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -74,8 +84,9 @@
       <div class="hero-bg"></div>
       <div class="hero-content">
         <p class="hero-eyebrow" data-reveal="up">Illustration · Design · Music · Web</p>
-        <h1 class="hero-title" data-reveal="up" data-reveal-delay="150">
-          Creative<br><em>without limits</em>
+        <h1 class="hero-title">
+          <span class="t-line"><span class="t-word">Creative</span></span>
+          <span class="t-line"><em class="t-word">without limits</em></span>
         </h1>
         <p class="hero-sub" data-reveal="up" data-reveal-delay="300">ジャンルを超えて、自分だけの表現を追い求めるマルチクリエイター。</p>
         <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" data-reveal="up" data-reveal-delay="450">
@@ -135,14 +146,14 @@
       </div>
       <div class="about-text" data-reveal="right">
         <p class="section-label">About</p>
-        <h2 class="section-title">クリエイティブで<br>世界を広げる</h2>
+        <h2 class="section-title">表現で、<br>世界を広げる</h2>
         <p>
-          Sen Tsukigase は、イラスト・デザイン・音楽・ウェブサイト制作など、
-          クリエイティブな活動全般に強い関心を持つアーティストです。
+          Sen Tsukigase は、絵・デザイン・音楽・ウェブ制作など、
+          多彩な創作活動に情熱を注ぐ表現者です。
         </p>
         <p>
-          特定のジャンルに縛られず、あらゆる表現領域で自分のビジョンを形にすることを目標に活動しています。
-          それぞれの分野が互いに影響し合い、唯一無二のクリエイティブへとつながると信じています。
+          特定の分野に縛られることなく、さまざまな表現の形で自らの世界を作品に刻んでいます。
+          それぞれの活動が互いに響き合うことで、他にはない独自の世界観が生まれると信じています。
         </p>
         <a href="works.html" class="btn">作品を見る</a>
       </div>
@@ -197,6 +208,7 @@
 
 
   <script src="reveal.js" defer></script>
+  <script src="interactions.js" defer></script>
   <script>
     // Netlify Identity: ログイン後に管理画面へリダイレクト
     if (window.netlifyIdentity) {
@@ -262,15 +274,24 @@
 
     (function () {
       var intro = document.getElementById('piano-intro');
+      var title = document.querySelector('.hero-title');
+
+      function revealTitle(delay) {
+        setTimeout(function () {
+          if (title) title.classList.add('title-revealed');
+        }, delay);
+      }
 
       if (sessionStorage.getItem('pianoShown')) {
         intro.remove();
+        revealTitle(120);
       } else {
         function closePiano() {
           if (intro.classList.contains('pi-out')) return;
           sessionStorage.setItem('pianoShown', '1');
           intro.classList.add('pi-out');
           setTimeout(function () { if (intro.parentNode) intro.remove(); }, 1000);
+          revealTitle(1100);
         }
 
         intro.addEventListener('click', closePiano);
