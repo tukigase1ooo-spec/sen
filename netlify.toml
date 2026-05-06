@@ -1,6 +1,16 @@
 [build]
   publish = "."
 
+# サイト全体のセキュリティヘッダー
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# 管理画面は iframe 埋め込みを自サイトのみ許可
 [[headers]]
   for = "/admin/*"
   [headers.values]

@@ -22,11 +22,19 @@ collections:
             summary: "{{fields.title}} — {{fields.client}}"
             fields:
               - { label: "タイトル",     name: title,       widget: string }
+              - label: "カテゴリ"
+                name: category
+                widget: select
+                options:
+                  - { label: "ウェブ制作", value: "web" }
+                  - { label: "イラスト依頼", value: "illustration" }
+                default: "web"
               - { label: "クライアント", name: client,      widget: string, required: false }
               - { label: "用途",         name: usage,       widget: string, required: false }
               - { label: "媒体",         name: medium,      widget: string, required: false }
               - { label: "制作年",       name: year,        widget: string }
               - { label: "説明文",       name: desc,        widget: text,   required: false }
+              - { label: "サイトURL（任意）", name: siteUrl, widget: string, required: false, hint: "公開中のサイトURLがあれば入力してください（例: https://example.com）" }
               - { label: "画像",         name: image,       widget: image,  required: false, hint: "作品画像をアップロードしてください" }
               - label: "アスペクト比"
                 name: aspectRatio

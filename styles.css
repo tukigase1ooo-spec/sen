@@ -255,7 +255,7 @@ section {
 
 .section-title {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
-  letter---spacing: -0.01em;
+  letter-spacing: -0.01em;
   margin-bottom: 48px;
 }
 

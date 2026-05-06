@@ -115,6 +115,11 @@
     a.addEventListener('click', closeNav);
   });
 
+  // ── 著作権年を動的更新 ──────────────────────────── (全デバイス)
+  document.querySelectorAll('.copyright-year').forEach(function (el) {
+    el.textContent = new Date().getFullYear();
+  });
+
   // ── トップへ戻るボタン ───────────────────────────── (全デバイス)
   var backTop = document.createElement('button');
   backTop.className = 'back-to-top';
