@@ -276,6 +276,12 @@
   <script>
     let allWorks = [];
 
+    function imgUrl(src, width, quality) {
+      if (!src) return '';
+      const q = quality || 82;
+      return `/.netlify/images?url=${encodeURIComponent(src)}&w=${width}&fm=webp&q=${q}`;
+    }
+
     function closeModal() {
       document.getElementById('modalBackdrop').classList.remove('open');
       document.body.style.overflow = '';
@@ -287,7 +293,7 @@
 
       if (work.image) {
         const img = document.createElement('img');
-        img.src = work.image;
+        img.src = imgUrl(work.image, 1400, 88);
         img.alt = work.title || '';
         modalImage.appendChild(img);
       } else {
@@ -351,7 +357,7 @@
 
       if (work.image) {
         const img = document.createElement('img');
-        img.src = work.image;
+        img.src = imgUrl(work.image, 800, 80);
         img.alt = work.title || '';
         img.loading = 'lazy';
         div.appendChild(img);

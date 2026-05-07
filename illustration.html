@@ -268,6 +268,12 @@
     let filteredItems = [];
     let currentIndex = 0;
 
+    function imgUrl(src, width, quality) {
+      if (!src) return '';
+      const q = quality || 82;
+      return `/.netlify/images?url=${encodeURIComponent(src)}&w=${width}&fm=webp&q=${q}`;
+    }
+
     const illustBackdrop = document.getElementById('illustBackdrop');
     const illustImage    = document.getElementById('illustImage');
     const illustCatLabel = document.getElementById('illustCatLabel');
@@ -285,7 +291,7 @@
       illustImage.innerHTML = '';
       if (w.image) {
         const img = document.createElement('img');
-        img.src = w.image;
+        img.src = imgUrl(w.image, 1400, 88);
         img.alt = w.title || '';
         illustImage.appendChild(img);
       } else {
@@ -372,7 +378,7 @@
 
         if (work.image) {
           const img = document.createElement('img');
-          img.src = work.image;
+          img.src = imgUrl(work.image, 800, 80);
           img.alt = work.title || '';
           img.loading = 'lazy';
           div.appendChild(img);
