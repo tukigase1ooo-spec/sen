@@ -54,22 +54,24 @@
     });
   });
 
-  // ── フィルムグレイン ─────────────────────────────── (全デバイス)
-  var canvas = document.createElement('canvas');
-  canvas.width = canvas.height = 180;
-  var ctx = canvas.getContext('2d');
-  var imageData = ctx.createImageData(180, 180);
-  for (var i = 0; i < imageData.data.length; i += 4) {
-    var v = Math.random() * 255 | 0;
-    imageData.data[i] = imageData.data[i + 1] = imageData.data[i + 2] = v;
-    imageData.data[i + 3] = 255;
-  }
-  ctx.putImageData(imageData, 0, 0);
+  // ── フィルムグレイン ─────────────────────────────── (ギャラリー系ページを除く)
+  if (!/illustration|works/.test(window.location.pathname)) {
+    var canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 180;
+    var ctx = canvas.getContext('2d');
+    var imageData = ctx.createImageData(180, 180);
+    for (var i = 0; i < imageData.data.length; i += 4) {
+      var v = Math.random() * 255 | 0;
+      imageData.data[i] = imageData.data[i + 1] = imageData.data[i + 2] = v;
+      imageData.data[i + 3] = 255;
+    }
+    ctx.putImageData(imageData, 0, 0);
 
-  var grain = document.createElement('div');
-  grain.className = 'grain-overlay';
-  grain.style.backgroundImage = 'url(' + canvas.toDataURL() + ')';
-  document.body.appendChild(grain);
+    var grain = document.createElement('div');
+    grain.className = 'grain-overlay';
+    grain.style.backgroundImage = 'url(' + canvas.toDataURL() + ')';
+    document.body.appendChild(grain);
+  }
 
   // ── ヘッダースクロールガラス効果 ─────────────────── (全デバイス)
   var header = document.querySelector('header');
