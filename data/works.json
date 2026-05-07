@@ -1,16 +1,16 @@
 {
   "items": [
     {
-      "title": "Sen Tsukigase ポートフォリオサイト",
-      "category": "web",
-      "client": "Sen Tsukigase",
       "usage": "ポートフォリオサイト",
+      "siteUrl": "https://candid-lebkuchen-d6c940.netlify.app/",
+      "client": "Sen Tsukigase",
+      "desc": "イラストレーター・クリエイター向けの自身のポートフォリオウェブサイト。世界観に合わせ、ピアノをイメージしたデザインで制作。Illustration・Works・Contactページを含む多機能サイト。",
+      "aspectRatio": "4/3",
       "medium": "Web",
+      "title": "Sen Tsukigase ポートフォリオサイト",
+      "image": "/images/uploads/イラスト.png",
       "year": "2025",
-      "desc": "イラストレーター・クリエイター向けのポートフォリオサイト。世界観に合わせたダークテーマのデザインで制作。Illustration・Works・Contactページを含む多機能サイト。",
-      "siteUrl": "",
-      "image": "",
-      "aspectRatio": "4/3"
+      "category": "web"
     }
   ]
 }
