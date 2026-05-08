@@ -14,6 +14,9 @@
   <meta name="twitter:site" content="@Tukigase1000" />
   <meta name="twitter:title" content="Contact — Sen Tsukigase" />
   <meta name="twitter:description" content="作品のご依頼、展示のご相談など、お気軽にご連絡ください。イラスト・ウェブページ作成の依頼を受け付けています。" />
+  <meta property="og:url" content="https://sen-tukigase.netlify.app/contact.html" />
+  <meta property="og:image" content="https://sen-tukigase.netlify.app/images/ogp.jpg" />
+  <meta name="twitter:image" content="https://sen-tukigase.netlify.app/images/ogp.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -358,7 +361,9 @@
           <p style="margin:0;color:#c0392b;font-size:0.8rem;">※ 現在、実績非公開でのご依頼はお受けしておりません。</p>
         </div>
 
-        <form id="contactForm" novalidate>
+        <form id="contactForm" name="contact" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none;"><input name="bot-field" /></p>
 
           <div class="form-row">
             <div class="form-group">
@@ -481,22 +486,21 @@
       btn.textContent = '送信中…';
       btn.disabled = true;
 
-      const data = {
-        お名前: form.firstName.value + ' ' + form.lastName.value,
-        メールアドレス: form.email.value,
-        お問い合わせの種類: form.subject.value,
-        ご予算: form.budget.value || '未記入',
-        メッセージ: form.message.value
-      };
+      const params = new URLSearchParams({
+        'form-name': 'contact',
+        firstName: form.firstName.value,
+        lastName: form.lastName.value,
+        email: form.email.value,
+        subject: form.subject.value,
+        budget: form.budget.value || '未記入',
+        message: form.message.value
+      });
 
       try {
-        const res = await fetch('https://formspree.io/f/xdabojwy', {
+        const res = await fetch('/contact.html', {
           method: 'POST',
-          body: JSON.stringify(data),
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
+          body: params,
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
 
         if (res.ok) {

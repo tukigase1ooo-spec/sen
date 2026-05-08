@@ -14,6 +14,9 @@
   <meta name="twitter:site" content="@Tukigase1000" />
   <meta name="twitter:title" content="Sen Tsukigase — Illustrator" />
   <meta name="twitter:description" content="イラスト・デザイン・音楽・ウェブ制作など、多くの創作活動に挑戦しています。特定の分野に縛られることなく、さまざまな表現の形を模索しています。" />
+  <meta property="og:url" content="https://sen-tukigase.netlify.app/" />
+  <meta property="og:image" content="https://sen-tukigase.netlify.app/images/ogp.jpg" />
+  <meta name="twitter:image" content="https://sen-tukigase.netlify.app/images/ogp.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -208,6 +211,7 @@
   </footer>
 
 
+  <script src="data/works.js"></script>
   <script src="reveal.js" defer></script>
   <script src="interactions.js" defer></script>
   <script>
@@ -225,10 +229,15 @@
     // Featured works を JSON から動的生成
     async function loadFeatured() {
       try {
-        const res = await fetch('/data/works.json');
-        if (!res.ok) throw new Error();
-        const data = await res.json();
-        const items = (data.items || []).slice(0, 3);
+        let items;
+        try {
+          const res = await fetch('/data/works.json');
+          if (!res.ok) throw new Error();
+          const data = await res.json();
+          items = (data.items || []).slice(0, 3);
+        } catch {
+          items = ((window.__WORKS__ || {}).items || []).slice(0, 3);
+        }
         const grid = document.getElementById('featuredGrid');
 
         items.forEach((work, i) => {

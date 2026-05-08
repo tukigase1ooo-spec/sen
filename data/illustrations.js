@@ -1,4 +1,4 @@
-{
+window.__ILLUSTRATIONS__ = {
   "items": [
     {
       "title": "「せ・ん・ぱ・い💜」",
@@ -10,4 +10,4 @@
       "xUrl": "https://x.com/Tukigase1000/status/2052154217532653838?s=20"
     }
   ]
-}
+};

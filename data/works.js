@@ -1,4 +1,4 @@
-{
+window.__WORKS__ = {
   "items": [
     {
       "title": "Sen Tsukigase ポートフォリオサイト",
@@ -13,4 +13,4 @@
       "aspectRatio": "4/3"
     }
   ]
-}
+};

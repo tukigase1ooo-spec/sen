@@ -67,6 +67,7 @@ collections:
                   - { label: "ファンアート", value: "fanart" }
                 default: "original"
               - { label: "制作年", name: year,  widget: string }
+              - { label: "説明文", name: desc,  widget: text,   required: false }
               - { label: "X（Twitter）投稿URL", name: xUrl, widget: string, required: false, hint: "X（Twitter）の投稿URLをそのまま貼り付けてください（例: https://x.com/...）" }
               - { label: "画像",   name: image, widget: image, required: false }
               - label: "アスペクト比"

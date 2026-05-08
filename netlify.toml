@@ -1,7 +1,7 @@
 [build]
   publish = "."
+  command = "node build.js"
 
-# サイト全体のセキュリティヘッダー
 [[headers]]
   for = "/*"
   [headers.values]
@@ -9,8 +9,9 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none';"
 
-# 管理画面は iframe 埋め込みを自サイトのみ許可
+# 管理画面：Netlify CMS が外部スクリプト・iframe を必要とするため CSP は適用しない
 [[headers]]
   for = "/admin/*"
   [headers.values]
