@@ -8,7 +8,7 @@ window.__WORKS__ = {
       "medium": "Web",
       "year": "2025年5月",
       "desc": "イラストレーター・クリエイター向けの自身のポートフォリオウェブサイト。世界観に合わせ、ピアノをイメージしたデザインで制作。Illustration・Works・Contactページを含む多機能サイト。",
-      "siteUrl": "https://candid-lebkuchen-d6c940.netlify.app/",
+      "siteUrl": "https://tukigases-sen.netlify.app/",
       "image": "/images/uploads/イラスト.png",
       "aspectRatio": "4/3"
     }

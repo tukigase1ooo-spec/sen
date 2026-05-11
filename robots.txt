@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /admin/
 
-Sitemap: https://sen-tukigase.netlify.app/sitemap.xml
+Sitemap: https://tukigases-sen.netlify.app/sitemap.xml

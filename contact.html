@@ -14,9 +14,9 @@
   <meta name="twitter:site" content="@Tukigase1000" />
   <meta name="twitter:title" content="Contact — Sen Tsukigase" />
   <meta name="twitter:description" content="作品のご依頼、展示のご相談など、お気軽にご連絡ください。イラスト・ウェブページ作成の依頼を受け付けています。" />
-  <meta property="og:url" content="https://sen-tukigase.netlify.app/contact.html" />
-  <meta property="og:image" content="https://sen-tukigase.netlify.app/images/ogp.jpg" />
-  <meta name="twitter:image" content="https://sen-tukigase.netlify.app/images/ogp.jpg" />
+  <meta property="og:url" content="https://tukigases-sen.netlify.app/contact.html" />
+  <meta property="og:image" content="https://tukigases-sen.netlify.app/images/ogp.jpg" />
+  <meta name="twitter:image" content="https://tukigases-sen.netlify.app/images/ogp.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -141,6 +141,32 @@
       color: var(--mid);
       letter-spacing: 0.1em;
       margin-top: 4px;
+    }
+
+    /* ===== FILE UPLOAD ===== */
+    .file-upload-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border: 1px dashed #555;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 0.84rem;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      user-select: none;
+    }
+    .file-upload-label:hover,
+    .file-upload-label.drag-over {
+      border-color: var(--light);
+      color: var(--light);
+      background: rgba(255,255,255,0.03);
+    }
+    .file-upload-label.has-files {
+      border-color: #888;
+      color: var(--light);
     }
   </style>
 </head>
@@ -361,7 +387,7 @@
           <p style="margin:0;color:#c0392b;font-size:0.8rem;">※ 現在、実績非公開でのご依頼はお受けしておりません。</p>
         </div>
 
-        <form id="contactForm" name="contact" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <form id="contactForm" name="contact" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" novalidate>
           <input type="hidden" name="form-name" value="contact" />
           <p style="display:none;"><input name="bot-field" /></p>
 
@@ -408,6 +434,16 @@
           <div class="form-group">
             <label for="message">メッセージ</label>
             <textarea id="message" name="message" placeholder="ご依頼の内容、ご希望のスタイル、納期などをお知らせください。" required style="height:150px;"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="attachment">添付ファイル（任意）</label>
+            <label for="attachment" class="file-upload-label" id="fileLabel">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+              <span id="fileLabelText">ファイルを選択（またはここにドロップ）</span>
+            </label>
+            <input type="file" id="attachment" name="attachment" accept=".jpg,.jpeg,.png,.gif,.pdf,.zip,.psd" multiple style="position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;" aria-label="添付ファイル" />
+            <p style="font-size:0.76rem;color:var(--mid);margin-top:6px;letter-spacing:0.03em;">参考画像・PDF・資料など（JPG / PNG / GIF / PDF / ZIP / PSD）・各ファイル最大10MB</p>
           </div>
 
           <div class="form-group" style="display:flex;align-items:flex-start;gap:12px;">
@@ -475,6 +511,37 @@
 
     const form = document.getElementById('contactForm');
     const successMsg = document.getElementById('successMsg');
+    const fileInput = document.getElementById('attachment');
+    const fileLabel = document.getElementById('fileLabel');
+    const fileLabelText = document.getElementById('fileLabelText');
+
+    function updateFileLabel(files) {
+      if (!files || files.length === 0) {
+        fileLabelText.textContent = 'ファイルを選択（またはここにドロップ）';
+        fileLabel.classList.remove('has-files');
+      } else if (files.length === 1) {
+        fileLabelText.textContent = files[0].name;
+        fileLabel.classList.add('has-files');
+      } else {
+        fileLabelText.textContent = files.length + ' 件のファイルを選択中';
+        fileLabel.classList.add('has-files');
+      }
+    }
+
+    fileInput.addEventListener('change', () => updateFileLabel(fileInput.files));
+
+    fileLabel.addEventListener('dragover', (e) => { e.preventDefault(); fileLabel.classList.add('drag-over'); });
+    fileLabel.addEventListener('dragleave', () => fileLabel.classList.remove('drag-over'));
+    fileLabel.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileLabel.classList.remove('drag-over');
+      if (e.dataTransfer.files.length) {
+        const dt = new DataTransfer();
+        Array.from(e.dataTransfer.files).forEach(f => dt.items.add(f));
+        fileInput.files = dt.files;
+        updateFileLabel(fileInput.files);
+      }
+    });
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -486,25 +553,18 @@
       btn.textContent = '送信中…';
       btn.disabled = true;
 
-      const params = new URLSearchParams({
-        'form-name': 'contact',
-        firstName: form.firstName.value,
-        lastName: form.lastName.value,
-        email: form.email.value,
-        subject: form.subject.value,
-        budget: form.budget.value || '未記入',
-        message: form.message.value
-      });
+      const formData = new FormData(form);
+      if (!formData.get('budget')) formData.set('budget', '未記入');
 
       try {
         const res = await fetch('/contact.html', {
           method: 'POST',
-          body: params,
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+          body: formData
         });
 
         if (res.ok) {
           form.reset();
+          updateFileLabel(null);
           successMsg.classList.add('visible');
           successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
