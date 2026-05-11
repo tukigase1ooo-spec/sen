@@ -557,7 +557,7 @@
       if (!formData.get('budget')) formData.set('budget', '未記入');
 
       try {
-        const res = await fetch('/contact.html', {
+        const res = await fetch('/', {
           method: 'POST',
           body: formData
         });
