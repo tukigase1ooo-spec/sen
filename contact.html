@@ -168,6 +168,47 @@
       border-color: #888;
       color: var(--light);
     }
+    .file-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .file-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border: 1px solid #3a3a3a;
+      font-size: 0.82rem;
+    }
+    .file-item-icon { color: #666; flex-shrink: 0; }
+    .file-item-name {
+      flex: 1;
+      color: var(--light);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .file-item-size {
+      color: var(--mid);
+      font-size: 0.74rem;
+      flex-shrink: 0;
+      letter-spacing: 0.03em;
+    }
+    .file-item-remove {
+      background: none;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      padding: 0 2px;
+      flex-shrink: 0;
+      transition: color 0.15s;
+    }
+    .file-item-remove:hover { color: #ccc; }
   </style>
 </head>
 <body>
@@ -443,6 +484,7 @@
               <span id="fileLabelText">ファイルを選択（またはここにドロップ）</span>
             </label>
             <input type="file" id="attachment" name="attachment" accept=".jpg,.jpeg,.png,.gif,.pdf,.zip,.psd" multiple style="position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;" aria-label="添付ファイル" />
+            <div id="fileList" class="file-list"></div>
             <p style="font-size:0.76rem;color:var(--mid);margin-top:6px;letter-spacing:0.03em;">参考画像・PDF・資料など（JPG / PNG / GIF / PDF / ZIP / PSD）・各ファイル最大10MB</p>
           </div>
 
@@ -514,21 +556,47 @@
     const fileInput = document.getElementById('attachment');
     const fileLabel = document.getElementById('fileLabel');
     const fileLabelText = document.getElementById('fileLabelText');
+    const fileList = document.getElementById('fileList');
 
-    function updateFileLabel(files) {
+    function formatSize(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    function renderFileList() {
+      const files = fileInput.files;
+      fileList.innerHTML = '';
       if (!files || files.length === 0) {
         fileLabelText.textContent = 'ファイルを選択（またはここにドロップ）';
         fileLabel.classList.remove('has-files');
-      } else if (files.length === 1) {
-        fileLabelText.textContent = files[0].name;
-        fileLabel.classList.add('has-files');
-      } else {
-        fileLabelText.textContent = files.length + ' 件のファイルを選択中';
-        fileLabel.classList.add('has-files');
+        return;
       }
+      fileLabelText.textContent = 'さらにファイルを追加';
+      fileLabel.classList.add('has-files');
+      Array.from(files).forEach((file, i) => {
+        const item = document.createElement('div');
+        item.className = 'file-item';
+        item.innerHTML =
+          '<svg class="file-item-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>' +
+          '<span class="file-item-name">' + file.name + '</span>' +
+          '<span class="file-item-size">' + formatSize(file.size) + '</span>' +
+          '<button type="button" class="file-item-remove" data-index="' + i + '" aria-label="' + file.name + ' を削除">×</button>';
+        fileList.appendChild(item);
+      });
     }
 
-    fileInput.addEventListener('change', () => updateFileLabel(fileInput.files));
+    fileList.addEventListener('click', (e) => {
+      const btn = e.target.closest('.file-item-remove');
+      if (!btn) return;
+      const idx = parseInt(btn.dataset.index);
+      const dt = new DataTransfer();
+      Array.from(fileInput.files).forEach((f, i) => { if (i !== idx) dt.items.add(f); });
+      fileInput.files = dt.files;
+      renderFileList();
+    });
+
+    fileInput.addEventListener('change', renderFileList);
 
     fileLabel.addEventListener('dragover', (e) => { e.preventDefault(); fileLabel.classList.add('drag-over'); });
     fileLabel.addEventListener('dragleave', () => fileLabel.classList.remove('drag-over'));
@@ -537,9 +605,10 @@
       fileLabel.classList.remove('drag-over');
       if (e.dataTransfer.files.length) {
         const dt = new DataTransfer();
+        Array.from(fileInput.files).forEach(f => dt.items.add(f));
         Array.from(e.dataTransfer.files).forEach(f => dt.items.add(f));
         fileInput.files = dt.files;
-        updateFileLabel(fileInput.files);
+        renderFileList();
       }
     });
 
@@ -557,14 +626,15 @@
       if (!formData.get('budget')) formData.set('budget', '未記入');
 
       try {
-        const res = await fetch('/', {
+        const res = await fetch('/contact.html', {
           method: 'POST',
           body: formData
         });
 
         if (res.ok) {
           form.reset();
-          updateFileLabel(null);
+          fileInput.files = new DataTransfer().files;
+          renderFileList();
           successMsg.classList.add('visible');
           successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
