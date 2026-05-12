@@ -6,7 +6,10 @@
       "Bash(git push *)",
       "Bash(git add *)",
       "Bash(Select-String -Path \"C:\\\\Users\\\\takku\\\\OneDrive - Prospex\\\\デスクトップ\\\\AndoTak\\\\my\\\\illustrator-website\\\\works.html\" -Pattern \"</body>\")",
-      "Bash(Select-Object LineNumber)"
+      "Bash(Select-Object LineNumber)",
+      "Bash(git -C \"C:\\\\Users\\\\AndoTak\\\\OneDrive - Prospex\\\\デスクトップ\\\\AndoTak\\\\my\\\\illustrator-website\" stash pop)",
+      "Bash(git -C \"C:\\\\Users\\\\AndoTak\\\\OneDrive - Prospex\\\\デスクトップ\\\\AndoTak\\\\my\\\\illustrator-website\" push origin main)",
+      "Bash(git *)"
     ]
   }
 }
