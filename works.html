@@ -473,6 +473,7 @@
     function buildCard(work, i) {
       const div = document.createElement('div');
       div.className = 'masonry-item';
+      div.dataset.workTitle = work.title || '';
       div.style.aspectRatio = work.aspectRatio || '3/4';
       div.dataset.reveal = 'up';
       const delay = [0, 80, 160][i % 3];
@@ -548,6 +549,18 @@
       }
       if (allWorks.length) {
         renderWorks('all');
+        const param = new URLSearchParams(location.search).get('work');
+        if (param) {
+          const work = allWorks.find(w => w.title === param);
+          const card = Array.from(document.querySelectorAll('.masonry-item'))
+            .find(el => el.dataset.workTitle === param);
+          if (work && card) {
+            requestAnimationFrame(() => {
+              card.scrollIntoView({ behavior: 'instant', block: 'center' });
+              openModal(work, card);
+            });
+          }
+        }
       } else {
         document.getElementById('worksGrid').innerHTML =
           '<p style="padding:60px;color:#888;font-family:serif;letter-spacing:0.1em;">Coming Soon</p>';

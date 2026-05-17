@@ -271,6 +271,11 @@
           overlay.appendChild(p);
           div.appendChild(overlay);
 
+          div.style.cursor = 'pointer';
+          div.addEventListener('click', () => {
+            window.location.href = 'works.html?work=' + encodeURIComponent(work.title || '');
+          });
+
           grid.appendChild(div);
         });
 
