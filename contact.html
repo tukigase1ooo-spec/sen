@@ -309,8 +309,8 @@
 
             <div class="inquiry-section">
               <h4>現在の基本料金</h4>
-              <p>¥30,000 〜 ¥50,000</p>
-              <p style="margin-top:6px;font-size:0.82rem;color:var(--mid);">商用利用の場合は基本料金の 30〜50% を追加いただきます。</p>
+              <p id="illustPriceBase">¥50,000 〜</p>
+              <p id="illustPriceCommercial" style="margin-top:6px;font-size:0.82rem;color:var(--mid);">商用利用の場合は基本料金の 30〜50% を追加いただきます。</p>
               <p style="margin-top:4px;font-size:0.78rem;color:var(--mid);">※ 費用は予告なく変更する場合があります。</p>
             </div>
 
@@ -372,7 +372,7 @@
 
             <div class="inquiry-section">
               <h4>現在の基本料金</h4>
-              <p>¥30,000 〜 ¥50,000</p>
+              <p id="webPriceBase">¥30,000 〜 ¥50,000</p>
               <p style="margin-top:4px;font-size:0.78rem;color:var(--mid);">※ 費用は予告なく変更する場合があります。</p>
             </div>
 
@@ -546,6 +546,24 @@
 
   <script src="reveal.js" defer></script>
   <script src="interactions.js" defer></script>
+  <script>
+    fetch('/data/pricing.json')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (!data) return;
+        if (data.illustration) {
+          const base = document.getElementById('illustPriceBase');
+          if (base && data.illustration.base) base.textContent = data.illustration.base;
+          const comm = document.getElementById('illustPriceCommercial');
+          if (comm && data.illustration.commercial_note) comm.textContent = data.illustration.commercial_note;
+        }
+        if (data.web) {
+          const base = document.getElementById('webPriceBase');
+          if (base && data.web.base) base.textContent = data.web.base;
+        }
+      })
+      .catch(() => {});
+  </script>
   <script>
     const now = new Date();
     document.getElementById('recruitMsg').textContent =

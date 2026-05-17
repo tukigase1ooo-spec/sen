@@ -45,6 +45,40 @@ collections:
                   - { label: "正方形（1:1）", value: "1/1" }
                 default: "3/4"
 
+  - name: profile
+    label: "プロフィール設定"
+    files:
+      - name: profile
+        label: "プロフィール"
+        file: "data/profile.json"
+        format: json
+        fields:
+          - label: "アイコン画像（丸型）"
+            name: icon
+            widget: image
+            required: false
+            hint: "Aboutセクション左側に丸く表示されます。X（Twitter）のプロフィール画像のような正方形〜縦横比1:1の画像を推奨。"
+
+  - name: pricing
+    label: "料金設定"
+    files:
+      - name: pricing
+        label: "基本料金"
+        file: "data/pricing.json"
+        format: json
+        fields:
+          - label: "イラスト作成"
+            name: illustration
+            widget: object
+            fields:
+              - { label: "基本料金（例: ¥50,000 〜）", name: base, widget: string }
+              - { label: "商用利用注記", name: commercial_note, widget: string, required: false }
+          - label: "ウェブページ作成"
+            name: web
+            widget: object
+            fields:
+              - { label: "基本料金（例: ¥30,000 〜 ¥50,000）", name: base, widget: string }
+
   - name: illustrations
     label: "Illustration（イラスト）"
     files:

@@ -102,8 +102,9 @@
     <!-- ABOUT STRIP -->
     <div class="about-strip">
       <div class="about-image" data-reveal="left">
+        <img id="aboutIcon" class="about-icon-circle" src="" alt="Sen Tsukigase" style="display:none;" />
         <!-- Portrait placeholder illustration -->
-        <svg width="340" height="420" viewBox="0 0 340 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg id="aboutPlaceholder" width="340" height="420" viewBox="0 0 340 420" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- Background texture lines -->
           <rect width="340" height="420" fill="#111"/>
           <line x1="0" y1="40" x2="340" y2="40" stroke="#222" stroke-width="1"/>
@@ -158,7 +159,7 @@
           特定の分野に縛られることなく、さまざまな表現の形で自らの世界を作品に刻んでいます。
           それぞれの活動が互いに響き合うことで、他にはない独自の世界観が生まれると信じています。
         </p>
-        <a href="works.html" class="btn">作品を見る</a>
+        <a href="illustration.html" class="btn">作品を見る</a>
       </div>
     </div>
 
@@ -214,6 +215,20 @@
   <script src="data/works.js"></script>
   <script src="reveal.js" defer></script>
   <script src="interactions.js" defer></script>
+  <script>
+    fetch('/data/profile.json')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (data && data.icon) {
+          const img = document.getElementById('aboutIcon');
+          const svg = document.getElementById('aboutPlaceholder');
+          img.src = data.icon;
+          img.style.display = 'block';
+          if (svg) svg.style.display = 'none';
+        }
+      })
+      .catch(() => {});
+  </script>
   <script>
     // Netlify Identity: ログイン後に管理画面へリダイレクト
     if (window.netlifyIdentity) {
