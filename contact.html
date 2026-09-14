@@ -547,7 +547,7 @@
   <script src="reveal.js" defer></script>
   <script src="interactions.js" defer></script>
   <script>
-    fetch('/data/pricing.json')
+    fetch('data/pricing.json')
       .then(r => r.ok ? r.json() : null)
       .then(data => {
         if (!data) return;
@@ -644,7 +644,7 @@
       if (!formData.get('budget')) formData.set('budget', '未記入');
 
       try {
-        const res = await fetch('/contact.html', {
+        const res = await fetch('contact.html', {
           method: 'POST',
           body: formData
         });

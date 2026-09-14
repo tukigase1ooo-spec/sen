@@ -570,7 +570,7 @@
 
     async function loadIllustrations() {
       try {
-        const res = await fetch('/data/illustrations.json');
+        const res = await fetch('data/illustrations.json');
         if (!res.ok) throw new Error();
         const data = await res.json();
         allItems = data.items || [];

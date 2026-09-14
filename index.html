@@ -216,7 +216,7 @@
   <script src="reveal.js" defer></script>
   <script src="interactions.js" defer></script>
   <script>
-    fetch('/data/profile.json')
+    fetch('data/profile.json')
       .then(r => r.ok ? r.json() : null)
       .then(data => {
         if (data && data.icon) {
@@ -246,7 +246,7 @@
       try {
         let items;
         try {
-          const res = await fetch('/data/works.json');
+          const res = await fetch('data/works.json');
           if (!res.ok) throw new Error();
           const data = await res.json();
           items = (data.items || []).slice(0, 3);
