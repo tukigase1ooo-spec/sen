@@ -330,6 +330,11 @@
       return `/.netlify/images?url=${encodeURIComponent(src)}&w=${width}&fm=webp&q=${quality || 82}`;
     }
 
+    function setImgWithFallback(img, rawSrc, width, quality) {
+      img.src = imgUrl(rawSrc, width, quality);
+      img.onerror = () => { img.onerror = null; img.src = rawSrc; };
+    }
+
     const modalBackdrop = document.getElementById('modalBackdrop');
     const modalEl       = document.getElementById('modal');
 
@@ -338,7 +343,7 @@
       modalImage.innerHTML = '';
       if (work.image) {
         const img = document.createElement('img');
-        img.src = imgUrl(work.image, 1400, 88);
+        setImgWithFallback(img, work.image, 1400, 88);
         img.alt = work.title || '';
         modalImage.appendChild(img);
       } else {
@@ -481,7 +486,7 @@
 
       if (work.image) {
         const img = document.createElement('img');
-        img.src = imgUrl(work.image, 800, 80);
+        setImgWithFallback(img, work.image, 800, 80);
         img.alt = work.title || '';
         img.loading = 'lazy';
         div.appendChild(img);
