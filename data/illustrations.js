@@ -4,10 +4,19 @@ window.__ILLUSTRATIONS__ = {
       "title": "「せ・ん・ぱ・い💜」",
       "category": "fanart",
       "year": "2025年5月7日",
-      "desc": "推しへの愛を込めて描いたファンアート。背景の紫グラデーションにこだわりました。",
+      "desc": "【ぶいすぽっ　紫宮るな様】\nファンアートとして描かせていただきました！！",
       "image": "/images/uploads/せ・ん・ぱ・い💜.jpg",
       "aspectRatio": "3/4",
       "xUrl": "https://x.com/Tukigase1000/status/2052154217532653838?s=20"
+    },
+    {
+      "category": "fanart",
+      "aspectRatio": "3/4",
+      "title": "フランチェスカ・プレラーティ💜",
+      "year": "2025年5月17日",
+      "desc": "FGO Fate/strange Fake　フランチェスカ・プレラーティのファンアートです",
+      "xUrl": "https://x.com/Tukigase1000/status/2055988703479362019?s=20",
+      "image": "/images/uploads/フランチェスカ.png"
     }
   ]
 };

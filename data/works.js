@@ -11,6 +11,18 @@ window.__WORKS__ = {
       "siteUrl": "https://tukigases-sen.netlify.app/",
       "image": "/images/uploads/イラスト.png",
       "aspectRatio": "4/3"
+    },
+    {
+      "title": "のせさんのスマホ壁紙作成",
+      "category": "illustration",
+      "client": "のせさん",
+      "usage": "スマホ壁紙",
+      "medium": "イラスト",
+      "year": "2025年7月",
+      "desc": "",
+      "siteUrl": "",
+      "image": "/images/uploads/のせ2.png",
+      "aspectRatio": "3/4"
     }
   ]
 };
